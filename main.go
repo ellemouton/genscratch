@@ -14,9 +14,12 @@ import (
 	"github.com/ellemouton/genmake"
 )
 
-const envDir = "GENSCRATCHDIR"
+const envDir = "GENSCRATCHPATH"
 
-var cmdDir = flag.String("dir", "", "scratch environment directory")
+var (
+	cmdPath = flag.String("path", "", "scratch environment path")
+	dirName = flag.String("name", "", "scratch environment directory name")
+)
 
 func getDir() (string, error) {
 	dir, err := os.Getwd()
@@ -28,8 +31,12 @@ func getDir() (string, error) {
 		dir = os.Getenv(envDir)
 	}
 
-	if *cmdDir != "" {
-		dir = *cmdDir
+	if *cmdPath != "" {
+		dir = *cmdPath
+	}
+
+	if *dirName != "" {
+		return dir + "/" + *dirName, nil
 	}
 
 	num, err := getNextFolderNum(dir, "gs_")
