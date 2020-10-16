@@ -1,12 +1,11 @@
 package main
 
-const mainTmpl = `
-#include <iostream>
+const mainTmpl = `#include <iostream>
 
 using namespace std;
 
 int main(void) 
 {
-	cout << "Hello GenScratch" << stdl;
+	cout << "Hello GenScratch" << endl;
 }
 `
