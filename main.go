@@ -39,6 +39,10 @@ func getDir() (string, error) {
 		return dir + "/" + *dirName, nil
 	}
 
+	if _, err := os.Stat(dir); os.IsNotExist(err) {
+		os.Mkdir(dir, 0755)
+	}
+
 	num, err := getNextFolderNum(dir, "gs_")
 	if err != nil {
 		return "", err
