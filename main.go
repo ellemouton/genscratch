@@ -80,7 +80,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	err = genmake.Generate(scratchDir, "play")
+	err = genmake.Generate(scratchDir, "prog")
 	if err != nil {
 		log.Fatal(err)
 	}
